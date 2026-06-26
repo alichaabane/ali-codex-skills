@@ -2,65 +2,48 @@
 
 ## Repository Status
 
-Ali Codex Skills has evolved from the original fork into a Codex-native engineering skills repository. The core public shape is now present: a project README, a Codex entrypoint, a skills index, and five focused Codex skills.
+Ali Codex Skills is close to a first public Codex-native release. The root documentation, Codex entrypoint, skills index, and five focused skills are present.
 
-The repository still contains legacy Claude and Cursor artifacts from the source project. These are useful during transition but should not define the v0.1 identity.
+The release tree has been simplified around Codex. Historical migration and review notes now live under `docs/`.
 
 ## Top-Level Classification
 
 | Path | Classification | Notes |
 |------|----------------|-------|
-| `.claude-plugin/` | Deprecate | Legacy Claude plugin packaging; keep temporarily until Codex distribution is settled. |
-| `.cursor/` | Deprecate | Legacy Cursor rule support; keep temporarily for compatibility. |
 | `.git/` | Keep | Local Git metadata, not release content. |
-| `.gitignore` | Keep | Required to keep editor, cache, and local files out of commits. |
-| `.idea/` | Remove | Local IDE metadata; ignored and should not be part of the public repository. |
-| `docs/` | Keep | Release and migration documentation belongs here. |
-| `skills/` | Keep | Core product of the repository. |
-| `CLAUDE.md` | Deprecate | Legacy Claude instruction file; keep until compatibility decision is finalized. |
-| `CODEX.md` | Keep | Codex entrypoint that connects the repository purpose, workflow, skills, and principles. |
-| `CURSOR.md` | Deprecate | Legacy Cursor usage documentation; keep until Cursor support is removed or rewritten. |
-| `EXAMPLES.md` | Move | Useful inherited examples, but should move into skill references when examples are introduced. |
-| `MIGRATION_PLAN.md` | Move | Planning artifact should live under `docs/`. |
+| `.gitignore` | Keep | Keeps editor, cache, and local files out of commits. |
+| `.idea/` | Remove | Local IDE metadata; ignored and should not be published. |
+| `CODEX.md` | Keep | Entry point for ChatGPT Codex users. |
+| `EXAMPLES.md` | Move | Useful inherited examples; move into skill references when examples are introduced. |
 | `README.md` | Keep | Public project homepage. |
-| `REVIEW.md` | Move | Review artifact should live under `docs/` or be folded into issue tracking. |
+| `docs/` | Keep | Project history, release preparation, and future documentation. |
+| `skills/` | Keep | Core product of the repository. |
 
 ## Keep
 
-- `README.md`: Keep as the public GitHub homepage for v0.1.
-- `CODEX.md`: Keep as the concise Codex user entrypoint.
-- `skills/`: Keep as the primary repository content.
-- `skills/README.md`: Keep as the skills index.
-- `skills/codex-engineering-playbook/`: Keep as the core implementation workflow.
-- `skills/codex-repository-analysis/`: Keep as the repository discovery workflow.
-- `skills/codex-debugging/`: Keep as the debugging workflow.
-- `skills/codex-testing-verification/`: Keep as the verification workflow.
-- `skills/codex-code-review/`: Keep as the code review workflow.
-- `.gitignore`: Keep to prevent local/editor artifacts from entering the repository.
-- `docs/`: Keep as the home for release preparation, migration notes, and future project documentation.
+- `README.md`: Public GitHub homepage for v0.1.
+- `CODEX.md`: Concise Codex user entrypoint.
+- `skills/`: Primary repository content.
+- `skills/README.md`: Skills index.
+- `skills/codex-engineering-playbook/`: Core implementation workflow.
+- `skills/codex-repository-analysis/`: Repository discovery workflow.
+- `skills/codex-debugging/`: Debugging workflow.
+- `skills/codex-testing-verification/`: Verification workflow.
+- `skills/codex-code-review/`: Code review workflow.
+- `docs/`: Home for release preparation, migration notes, and project history.
+- `.gitignore`: Required for clean public commits.
 
 ## Move
 
-- `MIGRATION_PLAN.md` -> `docs/migration.md`: Move after v0.1 or before release if the migration plan remains useful as project history.
-- `REVIEW.md` -> `docs/core-skill-review.md`: Move if the review remains useful; otherwise convert findings into issues and remove the file.
 - `EXAMPLES.md` -> `skills/codex-engineering-playbook/references/examples.md`: Move when examples and references are added to skills.
 
 ## Deprecate
 
-- `CLAUDE.md`: Keep temporarily for users who still rely on the inherited Claude workflow, but mark as legacy once Codex-native docs are complete.
-- `CURSOR.md`: Keep temporarily while `.cursor/` remains in the repository, but do not expand it.
-- `.cursor/`: Keep temporarily for compatibility with existing Cursor users.
-- `.claude-plugin/`: Keep temporarily because it still points at the renamed core skill, but it is not part of the Codex-native target.
+- No transitional compatibility files remain in the release tree.
 
 ## Remove After v0.1
 
-- `CLAUDE.md`: Remove after Codex-native entrypoints and skills fully replace root Claude instructions.
-- `CURSOR.md`: Remove after Cursor compatibility is retired or moved to external documentation.
-- `.cursor/`: Remove after the project stops shipping Cursor rules.
-- `.claude-plugin/`: Remove after the project decides not to distribute as a Claude plugin.
 - `.idea/`: Remove from local working trees if present; it is ignored and should never be published.
-
-Only remove legacy support after the replacement path is clear and documented.
 
 ## Missing Files
 
@@ -79,8 +62,8 @@ Only remove legacy support after the replacement path is clear and documented.
 - [ ] All five initial skills reviewed for concise frontmatter and focused scope.
 - [ ] `LICENSE` added.
 - [ ] `CHANGELOG.md` added with v0.1 notes.
-- [ ] Legacy Claude and Cursor files reviewed and marked as transitional.
-- [ ] Migration and review artifacts moved under `docs/` or converted into issues.
+- [ ] Project history moved under `docs/`.
+- [ ] Legacy non-Codex distribution artifacts removed.
 - [ ] Repository status clean before release.
 - [ ] Initial GitHub release created.
 - [ ] `v0.1.0` tag pushed.
