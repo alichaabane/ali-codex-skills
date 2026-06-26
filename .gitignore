@@ -12,6 +12,7 @@ Thumbs.db
 
 # Caches and generated files
 .cache/
+*.log
 .pytest_cache/
 __pycache__/
 *.py[cod]
