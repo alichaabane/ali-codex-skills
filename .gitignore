@@ -1,0 +1,20 @@
+.idea/
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local environment
+.env
+.env.*
+!.env.example
+
+# Caches and generated files
+.cache/
+.pytest_cache/
+__pycache__/
+*.py[cod]
+node_modules/
+dist/
+build/
