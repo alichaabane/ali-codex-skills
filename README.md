@@ -1,39 +1,89 @@
 # Ali Codex Skills
 
-Ali Codex Skills is a Codex-native engineering playbook for working with
-ChatGPT Codex on real software projects.
+Focused engineering skills for ChatGPT Codex.
 
-The goal is to collect practical, reusable skills for planning changes,
-editing code, debugging, reviewing pull requests, and verifying work with
-tests or concrete commands.
+Ali Codex Skills is a Codex-native engineering playbook for working with real software projects. It provides small, reusable skills that help Codex understand repositories, make focused changes, debug defects, verify work, and review code.
 
-## Status
+---
 
-Work in progress.
+## Why this project exists
 
-This repository is being developed incrementally. It was forked from
-`multica-ai/andrej-karpathy-skills`, but the target structure is a
-Codex-native skill repository rather than a direct rename of the original
-project.
+AI coding agents perform better when they have focused engineering workflows. Instead of relying on one giant instruction file, this repository provides modular reusable skills, each with one responsibility.
 
-## Goals
+The goal is to make Codex more consistent, practical, and reviewable across common software engineering tasks.
 
-- Codex-specific engineering guidance
-- Practical workflows for code changes
-- Debugging and code review checklists
-- Testing and verification practices
-- Real-world examples that support engineering judgment
+---
 
-## Incremental development
+## Features
 
-The current repository still contains inherited Claude and Cursor artifacts
-while the Codex-native structure is being designed. Those files will be
-adapted, replaced, or removed in small reviewable steps.
+- Modular skills with focused responsibilities
+- Codex-native design
+- Practical engineering workflows
+- Small guidance files that are easy to inspect and maintain
+- Repository analysis for unfamiliar codebases
+- Debugging workflows for isolating defects
+- Testing and verification guidance
+- Code review behavior for practical engineering reviews
 
-See `MIGRATION_PLAN.md` for the current migration plan.
+---
+
+## Repository Structure
+
+```text
+ali-codex-skills/
+├── README.md
+├── CODEX.md
+├── skills/
+│   ├── README.md
+│   ├── codex-engineering-playbook/
+│   ├── codex-repository-analysis/
+│   ├── codex-debugging/
+│   ├── codex-testing-verification/
+│   └── codex-code-review/
+```
+
+- `README.md`: public project overview.
+- `CODEX.md`: concise entry point for ChatGPT Codex users.
+- `skills/README.md`: index of available skills and when to use them.
+- `skills/*/SKILL.md`: focused procedural workflows for Codex.
+
+---
+
+## Available Skills
+
+| Skill | Purpose |
+|-------|---------|
+| Engineering Playbook | Core implementation workflow |
+| Repository Analysis | Understand unfamiliar repositories |
+| Debugging | Investigate and isolate defects |
+| Testing & Verification | Verify changes with confidence |
+| Code Review | Review code changes systematically |
+
+---
+
+## Design Principles
+
+- Understand before changing.
+- Keep changes focused.
+- Reuse existing patterns.
+- Verify with evidence.
+- Report assumptions.
+- Keep skills modular.
+
+---
+
+## Roadmap
+
+- Additional specialized skills
+- Examples and references
+- OpenAI agent metadata
+- Community contributions
+
+---
 
 ## Attribution
 
-This project is inspired by and forked from:
+Ali Codex Skills was inspired by the original `andrej-karpathy-skills` repository and has evolved into a Codex-native engineering playbook.
 
+Original project:
 https://github.com/multica-ai/andrej-karpathy-skills
