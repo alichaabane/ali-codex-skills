@@ -1,67 +1,53 @@
 ---
 name: codex-engineering-playbook
-description: Codex-native engineering playbook to reduce common AI coding mistakes. Use when writing, reviewing, or refactoring code to avoid overcomplication, make surgical changes, surface assumptions, and define verifiable success criteria.
-license: MIT
+description: Codex-native engineering workflow for inspecting, editing, debugging, reviewing, refactoring, testing, or migrating a codebase through small changes, existing patterns, concrete verification, and clear risk reporting.
 ---
 
 # Codex Engineering Playbook
 
-Behavioral guidelines to reduce common LLM coding mistakes, derived from [Andrej Karpathy's observations](https://x.com/karpathy/status/2015883857489522876) on LLM coding pitfalls.
+Use this playbook to make code changes procedurally: inspect first, change narrowly, verify concretely, and communicate residual risk.
 
-**Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
+## Workflow
 
-## 1. Think Before Coding
+1. Inspect the repository before editing.
+   - Identify the project structure, relevant files, existing conventions, and available test or build commands.
+   - Check repository status and preserve unrelated user changes.
+   - Discover canonical commands from project files, scripts, CI config, and docs.
+   - Prefer fast search tools such as `rg` for finding files, symbols, and references.
+   - Read surrounding code before changing it.
 
-**Don't assume. Don't hide confusion. Surface tradeoffs.**
+2. Define the work before touching files.
+   - Restate the concrete goal when the request is broad or ambiguous.
+   - Surface assumptions that affect implementation choices.
+   - Ask only when missing information blocks a safe change.
+   - For multi-step work, use a short plan with verification points.
 
-Before implementing:
-- State your assumptions explicitly. If uncertain, ask.
-- If multiple interpretations exist, present them - don't pick silently.
-- If a simpler approach exists, say so. Push back when warranted.
-- If something is unclear, stop. Name what's confusing. Ask.
+3. Make small focused changes.
+   - Edit only files required by the task.
+   - Avoid drive-by formatting, unrelated cleanup, and speculative features.
+   - Do not revert, overwrite, stage, or commit unrelated work unless explicitly asked.
+   - Remove only unused code introduced by the current change unless asked otherwise.
+   - Keep each change easy to review and easy to revert.
 
-## 2. Simplicity First
+4. Reuse existing patterns.
+   - Match local style, naming, error handling, tests, and abstractions.
+   - Prefer existing helpers, framework conventions, and project scripts over new machinery.
+   - Add an abstraction only when it removes real duplication or matches an established pattern.
 
-**Minimum code that solves the problem. Nothing speculative.**
+5. Verify with concrete commands.
+   - Run the narrowest useful project-defined test, typecheck, lint, build, or manual command available.
+   - When fixing a bug, reproduce it first when practical, then verify the fix.
+   - If a check fails or cannot be run, separate the command, outcome, likely cause, and remaining risk.
 
-- No features beyond what was asked.
-- No abstractions for single-use code.
-- No "flexibility" or "configurability" that wasn't requested.
-- No error handling for impossible scenarios.
-- If you write 200 lines and it could be 50, rewrite it.
+6. Report the result clearly.
+   - Summarize changed files and behavior.
+   - State tests or commands run and their outcome.
+   - Call out assumptions, failed or skipped checks, limitations, and follow-up work that matters.
 
-Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
+## Operating Rules
 
-## 3. Surgical Changes
-
-**Touch only what you must. Clean up only your own mess.**
-
-When editing existing code:
-- Don't "improve" adjacent code, comments, or formatting.
-- Don't refactor things that aren't broken.
-- Match existing style, even if you'd do it differently.
-- If you notice unrelated dead code, mention it - don't delete it.
-
-When your changes create orphans:
-- Remove imports/variables/functions that YOUR changes made unused.
-- Don't remove pre-existing dead code unless asked.
-
-The test: Every changed line should trace directly to the user's request.
-
-## 4. Goal-Driven Execution
-
-**Define success criteria. Loop until verified.**
-
-Transform tasks into verifiable goals:
-- "Add validation" → "Write tests for invalid inputs, then make them pass"
-- "Fix the bug" → "Write a test that reproduces it, then make it pass"
-- "Refactor X" → "Ensure tests pass before and after"
-
-For multi-step tasks, state a brief plan:
-```
-1. [Step] → verify: [check]
-2. [Step] → verify: [check]
-3. [Step] → verify: [check]
-```
-
-Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
+- Prefer the simplest implementation that satisfies the current request.
+- Do not silently choose between materially different interpretations.
+- Do not hide uncertainty; name it and either resolve it or proceed with an explicit assumption.
+- Keep diffs proportional to the task.
+- Treat verification as part of the work, not as an optional final step.
